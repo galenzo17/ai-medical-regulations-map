@@ -1,5 +1,6 @@
 ---
 import countries from '../data/countries.json';
+import regulationsData from '../data/links.json';
 ---
 
 <div id="map" class="map-container"></div>
@@ -8,6 +9,10 @@ import countries from '../data/countries.json';
   <div class="legend-item">
     <div class="legend-color implemented"></div>
     <span>Implemented</span>
+  </div>
+  <div class="legend-item">
+    <div class="legend-color in-development"></div>
+    <span>In Development</span>
   </div>
   <div class="legend-item">
     <div class="legend-color no-regulation"></div>
@@ -19,79 +24,24 @@ import countries from '../data/countries.json';
   import L from 'leaflet';
 
   const geoData = (window as any).countries;
+  const regulationsData = (window as any).regulationsData;
 
-  // Countries with AI medical regulations based on the provided data
-  const countriesWithRegulations = {
-    'US': {
-      name: 'United States',
-      regulations: 'Implemented'
-    },
-    'EU': {
-      name: 'European Union',
-      regulations: 'Implemented'
-    },
-    'GB': {
-      name: 'United Kingdom', 
-      regulations: 'Implemented'
-    },
-    'CN': {
-      name: 'China',
-      regulations: 'Implemented'
-    },
-    'AU': {
-      name: 'Australia',
-      regulations: 'Implemented'
-    },
-    'SG': {
-      name: 'Singapore',
-      regulations: 'Implemented'
-    },
-    'BR': {
-      name: 'Brazil',
-      regulations: 'Implemented'
-    },
-    // EU countries that follow EU regulations
-    'DE': {
-      name: 'Germany',
-      regulations: 'Implemented'
-    },
-    'FR': {
-      name: 'France', 
-      regulations: 'Implemented'
-    },
-    'IT': {
-      name: 'Italy',
-      regulations: 'Implemented'
-    },
-    'ES': {
-      name: 'Spain',
-      regulations: 'Implemented'
-    },
-    'NL': {
-      name: 'Netherlands',
-      regulations: 'Implemented'
-    },
-    'PT': {
-      name: 'Portugal',
-      regulations: 'Implemented'
-    },
-    'CH': {
-      name: 'Switzerland',
-      regulations: 'Implemented'
-    },
-    'AT': {
-      name: 'Austria',
-      regulations: 'Implemented'
-    }
-  };
-
-  // Function to check if country has AI policies
-  function hasIaPolicies(countryCode) {
-    return countriesWithRegulations.hasOwnProperty(countryCode);
+  // Function to get country regulation info from comprehensive data
+  function getCountryRegulationInfo(countryCode) {
+    return regulationsData?.countries?.[countryCode] || null;
   }
 
-  function getRegulationInfo(countryCode) {
-    return countriesWithRegulations[countryCode] || null;
+  // Function to check if country has AI policies
+  function hasAiPolicies(countryCode) {
+    const countryData = getCountryRegulationInfo(countryCode);
+    return countryData !== null;
+  }
+
+  // Function to get regulation status
+  function getRegulationStatus(countryCode) {
+    const countryData = getCountryRegulationInfo(countryCode);
+    if (!countryData) return 'no-regulation';
+    return countryData.status === 'Implemented' ? 'implemented' : 'in-development';
   }
 
   function initMap() {
@@ -119,33 +69,41 @@ import countries from '../data/countries.json';
 
     // Style function for countries
     function style(feature) {
-      console.log('Feature properties:', feature.properties);
       const countryCode = feature.properties["ISO3166-1-Alpha-2"] || feature.properties.iso_a2 || 
                          feature.properties.ADM0_A3 || feature.properties.adm0_a3;
       
-      console.log('Country:', feature.properties.NAME || feature.properties.ADMIN, 'Code:', countryCode);
+      const status = getRegulationStatus(countryCode);
       
-      if (hasIaPolicies(countryCode)) {
-        console.log('Has AI policies:', countryCode);
-        return {
-          fillColor: '#10b981', // Green for countries with AI policies
+      const styles = {
+        'implemented': {
+          fillColor: '#10b981', // Green for implemented
           weight: 2,
           opacity: 1,
           color: 'white',
           dashArray: '3',
           fillOpacity: 0.8
-        };
-      }
-      
-      return {
-        fillColor: '#3388ff', // Blue for countries without AI policies
-        weight: 2,
-        opacity: 1,
-        color: 'white',
-        dashArray: '3',
-        fillOpacity: 0.7
+        },
+        'in-development': {
+          fillColor: '#f59e0b', // Orange for in development  
+          weight: 2,
+          opacity: 1,
+          color: 'white',
+          dashArray: '3',
+          fillOpacity: 0.8
+        },
+        'no-regulation': {
+          fillColor: '#3388ff', // Blue for no regulation
+          weight: 2,
+          opacity: 1,
+          color: 'white',
+          dashArray: '3',
+          fillOpacity: 0.7
+        }
       };
+      
+      return styles[status] || styles['no-regulation'];
     }
+
 
     // Highlight feature function
     function highlightFeature(e) {
@@ -181,26 +139,85 @@ import countries from '../data/countries.json';
         click: zoomToFeature
       });
       
-      // Add popup with country name and AI regulation status
+      // Add enhanced popup with comprehensive country info
       if (feature.properties) {
         const countryName = feature.properties.NAME || feature.properties.ADMIN || feature.properties.NAME_LONG || feature.properties.name || 'Unknown Country';
         const countryCode = feature.properties["ISO3166-1-Alpha-2"] || feature.properties.iso_a2 || 
                            feature.properties.ADM0_A3 || feature.properties.adm0_a3;
-        const regulationInfo = getRegulationInfo(countryCode);
+        const countryData = getCountryRegulationInfo(countryCode);
         
         let popupContent = `
-          <div style="max-width: 300px;">
-            <b>${countryName}</b><br>
-            <small>Code: ${countryCode || 'N/A'}</small><br>
+          <div class="popup-content" style="max-width: 450px;">
+            <h3>${countryName}</h3>
+            <small style="color: #94a3b8;">Code: ${countryCode || 'N/A'}</small>
         `;
         
-        if (regulationInfo) {
+        if (countryData) {
+          const statusColor = countryData.status === 'Implemented' ? '#10b981' : '#f59e0b';
+          const statusIcon = countryData.status === 'Implemented' ? '✓' : '⚠';
+          
           popupContent += `
-            <span style="color: #10b981; font-weight: bold;">✓ Implemented</span>
+            <div style="margin: 12px 0;">
+              <div style="color: ${statusColor}; font-weight: bold; margin-bottom: 8px;">
+                ${statusIcon} ${countryData.status}
+              </div>
+              <div style="margin-bottom: 8px;">
+                <strong>Type:</strong> ${countryData.regulationType}<br>
+                <strong>Since:</strong> ${countryData.implementationYear} 
+                ${countryData.lastUpdate ? `(Updated: ${countryData.lastUpdate})` : ''}
+              </div>
           `;
+          
+          // Add regulations
+          if (countryData.regulations && countryData.regulations.length > 0) {
+            popupContent += `
+              <div style="margin-top: 12px;">
+                <strong style="color: #10b981;">Regulations:</strong>
+                <div style="margin-top: 6px;">
+            `;
+            
+            countryData.regulations.forEach(reg => {
+              popupContent += `
+                <div style="margin-bottom: 10px; padding: 8px; background: rgba(148, 163, 184, 0.1); border-radius: 4px;">
+                  <strong>${reg.name}</strong> (${reg.year})<br>
+                  <small style="color: #94a3b8;">${reg.authority}</small><br>
+                  <em style="font-size: 12px; color: #cbd5e1;">${reg.description}</em>
+                  ${reg.link ? `<br><a href="${reg.link}" target="_blank" rel="noopener" style="color: #3b82f6; font-size: 11px;">View Source →</a>` : ''}
+                </div>
+              `;
+            });
+            
+            popupContent += `</div></div>`;
+          }
+          
+          // Add key features
+          if (countryData.keyFeatures && countryData.keyFeatures.length > 0) {
+            popupContent += `
+              <div style="margin-top: 12px;">
+                <strong style="color: #10b981;">Key Features:</strong>
+                <ul style="margin: 6px 0; padding-left: 16px; font-size: 12px;">
+            `;
+            countryData.keyFeatures.forEach(feature => {
+              popupContent += `<li style="margin-bottom: 3px; color: #cbd5e1;">${feature}</li>`;
+            });
+            popupContent += `</ul></div>`;
+          }
+          
+          // Add approved devices count
+          if (countryData.approvedDevices) {
+            popupContent += `
+              <div style="margin-top: 8px;">
+                <strong>Approved Devices:</strong> <span style="color: #10b981;">${countryData.approvedDevices}</span>
+              </div>
+            `;
+          }
+          
+          popupContent += `</div>`;
         } else {
           popupContent += `
-            <span style="color: #6b7280;">No regulation</span>
+            <div style="margin-top: 12px;">
+              <span style="color: #6b7280;">No specific AI medical device regulations</span>
+            </div>
           `;
         }
         
@@ -221,8 +238,9 @@ import countries from '../data/countries.json';
   document.addEventListener('DOMContentLoaded', initMap);
 </script>
 
-<script define:vars={{ countries }}>
+<script define:vars={{ countries, regulationsData }}>
   window.countries = countries;
+  window.regulationsData = regulationsData;
 </script>
 
 <style>
@@ -272,6 +290,10 @@ import countries from '../data/countries.json';
     background-color: #10b981;
   }
 
+  .legend-color.in-development {
+    background-color: #f59e0b;
+  }
+
   .legend-color.no-regulation {
     background-color: #3388ff;
   }
@@ -308,4 +330,5 @@ import countries from '../data/countries.json';
     background: rgba(15, 23, 42, 0.95) !important;
     border: 1px solid rgba(148, 163, 184, 0.2) !important;
   }
+
 </style>

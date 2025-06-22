@@ -1,0 +1,556 @@
+{
+    "countries": {
+      "US": {
+        "name": "United States",
+        "status": "Implemented",
+        "regulationType": "FDA Framework",
+        "implementationYear": 2019,
+        "lastUpdate": 2021,
+        "regulations": [
+          {
+            "name": "AI/ML-Based Software as Medical Device Action Plan",
+            "year": 2021,
+            "authority": "FDA",
+            "description": "Comprehensive framework for AI/ML medical devices with Total Product Life Cycle approach",
+            "link": "https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-and-machine-learning-software-medical-device"
+          },
+          {
+            "name": "Proposed Regulatory Framework for AI/ML-Based SaMD",
+            "year": 2019,
+            "authority": "FDA",
+            "description": "Framework for modifications to AI/ML-based Software as Medical Device",
+            "link": "https://www.fda.gov/media/122535/download"
+          }
+        ],
+        "approvedDevices": 521,
+        "keyFeatures": [
+          "Good Machine Learning Practices (GMLPs)",
+          "Predetermined Change Control Plan",
+          "Real-world performance monitoring",
+          "Patient-centric approach"
+        ]
+      },
+      "GB": {
+        "name": "United Kingdom",
+        "status": "Implemented",
+        "regulationType": "MHRA Framework",
+        "implementationYear": 2019,
+        "lastUpdate": 2022,
+        "regulations": [
+          {
+            "name": "Software and AI as Medical Device Change Programme",
+            "year": 2021,
+            "authority": "MHRA",
+            "description": "Comprehensive regulatory framework for AI medical devices lifecycle",
+            "link": "https://www.gov.uk/government/consultations/consultation-on-the-future-regulation-of-medical-devices-in-the-united-kingdom"
+          },
+          {
+            "name": "Evidence Standards Framework for Digital Health Technologies",
+            "year": 2019,
+            "authority": "NICE + NHS England",
+            "description": "Framework for apps, software, and online health platforms",
+            "link": "https://www.nice.org.uk/about/what-we-do/our-programmes/evidence-standards-framework"
+          }
+        ],
+        "keyFeatures": [
+          "Whole lifecycle approach",
+          "Public and patient involvement",
+          "Cybersecurity and data privacy focus",
+          "Post-market evaluation requirements"
+        ]
+      },
+      "CN": {
+        "name": "China",
+        "status": "Implemented",
+        "regulationType": "NMPA Guidelines",
+        "implementationYear": 2019,
+        "lastUpdate": 2022,
+        "regulations": [
+          {
+            "name": "Guidelines for Registration and Review of AI-Based Medical Devices",
+            "year": 2022,
+            "authority": "NMPA",
+            "description": "Standards for quality management and cybersecurity of AI medical devices",
+            "link": "https://www.nmpa.gov.cn/"
+          },
+          {
+            "name": "Guidelines for Classification and Definition of AI-Based Software as Medical Device",
+            "year": 2021,
+            "authority": "NMPA",
+            "description": "Classification and terminology for AI medical devices",
+            "link": "https://www.nmpa.gov.cn/"
+          },
+          {
+            "name": "Technical Guideline on AI-aided Software",
+            "year": 2019,
+            "authority": "NMPA",
+            "description": "Deep learning technology controls and clinical risk assessment",
+            "link": "https://www.nmpa.gov.cn/"
+          }
+        ],
+        "approvedDevices": 59,
+        "keyFeatures": [
+          "Total Product Life Cycle management",
+          "Risk-based approach",
+          "Deep learning technology controls",
+          "Clinical risk assessment methods"
+        ]
+      },
+      "AU": {
+        "name": "Australia",
+        "status": "Implemented",
+        "regulationType": "TGA Framework",
+        "implementationYear": 2021,
+        "lastUpdate": 2024,
+        "regulations": [
+          {
+            "name": "Therapeutic Goods (Medical Devices) Regulation",
+            "year": 2021,
+            "authority": "TGA",
+            "description": "Risk-based classification for software-based medical devices including AI",
+            "link": "https://www.tga.gov.au/how-we-regulate/manufacturing/manufacture-medical-device/manufacture-specific-types-medical-devices/artificial-intelligence-ai-and-medical-device-software"
+          },
+          {
+            "name": "Regulatory changes for software-based medical devices",
+            "year": 2021,
+            "authority": "TGA",
+            "description": "Guidance on amendments to medical device regulations",
+            "link": "https://www.tga.gov.au/resources/resource/guidance/software-based-medical-devices-guidance"
+          }
+        ],
+        "keyFeatures": [
+          "Risk-based classification approach",
+          "International harmonization focus",
+          "High-risk factor emphasis",
+          "Patient safety prioritization"
+        ]
+      },
+      "SG": {
+        "name": "Singapore",
+        "status": "Implemented",
+        "regulationType": "HSA + MOH Framework",
+        "implementationYear": 2021,
+        "lastUpdate": 2022,
+        "regulations": [
+          {
+            "name": "AI Verify - AI Governance Testing Framework",
+            "year": 2022,
+            "authority": "IMDA",
+            "description": "World's first AI governance testing framework with 11 ethics principles",
+            "link": "https://www.aiverifyfoundation.sg/"
+          },
+          {
+            "name": "Regulatory Guidelines for SaMD - A Lifecycle Approach",
+            "year": 2022,
+            "authority": "HSA",
+            "description": "Second revision focusing on lifecycle approach for software medical devices",
+            "link": "https://www.hsa.gov.sg/medical-devices/overview"
+          },
+          {
+            "name": "AI in Healthcare Guidelines (AIHGIe)",
+            "year": 2021,
+            "authority": "Ministry of Health",
+            "description": "Good practices for AI developers and implementers in healthcare",
+            "link": "https://www.moh.gov.sg/"
+          }
+        ],
+        "keyFeatures": [
+          "11 AI governance principles",
+          "Lifecycle approach",
+          "International framework alignment",
+          "Transparency and explainability focus"
+        ]
+      },
+      "BR": {
+        "name": "Brazil",
+        "status": "In Development",
+        "regulationType": "Legislative Framework",
+        "implementationYear": 2021,
+        "lastUpdate": 2022,
+        "regulations": [
+          {
+            "name": "Brazilian Legal Framework for AI",
+            "year": 2021,
+            "authority": "Brazilian Chamber of Deputies",
+            "description": "Risk-based approach for AI development and use",
+            "link": "https://www.camara.leg.br/"
+          },
+          {
+            "name": "Draft AI Law",
+            "year": 2022,
+            "authority": "Brazilian Senate",
+            "description": "Classifies health applications as high-risk AI systems",
+            "link": "https://www.senado.leg.br/"
+          }
+        ],
+        "keyFeatures": [
+          "High-risk classification for health applications",
+          "Public database requirement",
+          "Algorithmic impact assessments",
+          "Individual rights protection"
+        ]
+      },
+      "DE": {
+        "name": "Germany",
+        "status": "Implemented",
+        "regulationType": "EU AI Act",
+        "implementationYear": 2024,
+        "lastUpdate": 2024,
+        "regulations": [
+          {
+            "name": "European AI Act (Regulation 2024/1689)",
+            "year": 2024,
+            "authority": "European Commission",
+            "description": "First comprehensive legal framework on AI worldwide",
+            "link": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
+          }
+        ],
+        "keyFeatures": [
+          "Risk-based approach",
+          "Harmonized EU-wide framework",
+          "High-risk system requirements",
+          "Medical device integration"
+        ]
+      },
+      "FR": {
+        "name": "France",
+        "status": "Implemented",
+        "regulationType": "EU AI Act",
+        "implementationYear": 2024,
+        "lastUpdate": 2024,
+        "regulations": [
+          {
+            "name": "European AI Act (Regulation 2024/1689)",
+            "year": 2024,
+            "authority": "European Commission",
+            "description": "First comprehensive legal framework on AI worldwide",
+            "link": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
+          }
+        ],
+        "keyFeatures": [
+          "Risk-based approach",
+          "Harmonized EU-wide framework",
+          "High-risk system requirements",
+          "Medical device integration"
+        ]
+      },
+      "IT": {
+        "name": "Italy",
+        "status": "Implemented",
+        "regulationType": "EU AI Act",
+        "implementationYear": 2024,
+        "lastUpdate": 2024,
+        "regulations": [
+          {
+            "name": "European AI Act (Regulation 2024/1689)",
+            "year": 2024,
+            "authority": "European Commission",
+            "description": "First comprehensive legal framework on AI worldwide",
+            "link": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
+          }
+        ],
+        "keyFeatures": [
+          "Risk-based approach",
+          "Harmonized EU-wide framework",
+          "High-risk system requirements",
+          "Medical device integration"
+        ]
+      },
+      "ES": {
+        "name": "Spain",
+        "status": "Implemented",
+        "regulationType": "EU AI Act + National Strategy",
+        "implementationYear": 2024,
+        "lastUpdate": 2024,
+        "regulations": [
+          {
+            "name": "European AI Act (Regulation 2024/1689)",
+            "year": 2024,
+            "authority": "European Commission",
+            "description": "First comprehensive legal framework on AI worldwide",
+            "link": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
+          },
+          {
+            "name": "Spanish AI Strategy 2024",
+            "year": 2024,
+            "authority": "Spanish Government",
+            "description": "National strategy for AI implementation with healthcare focus",
+            "link": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/transformacion-digital-y-funcion-publica/Paginas/2024/ia-inteligencia-artificial-estrategia-espana.aspx"
+          }
+        ],
+        "keyFeatures": [
+          "EU AI Act compliance",
+          "National AI strategy",
+          "Healthcare modernization focus",
+          "AESIA supervision agency"
+        ]
+      },
+      "NL": {
+        "name": "Netherlands",
+        "status": "Implemented",
+        "regulationType": "EU AI Act",
+        "implementationYear": 2024,
+        "lastUpdate": 2024,
+        "regulations": [
+          {
+            "name": "European AI Act (Regulation 2024/1689)",
+            "year": 2024,
+            "authority": "European Commission",
+            "description": "First comprehensive legal framework on AI worldwide",
+            "link": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
+          }
+        ],
+        "keyFeatures": [
+          "Risk-based approach",
+          "Harmonized EU-wide framework",
+          "High-risk system requirements",
+          "Medical device integration"
+        ]
+      },
+      "PT": {
+        "name": "Portugal",
+        "status": "Implemented",
+        "regulationType": "EU AI Act + National Law",
+        "implementationYear": 2021,
+        "lastUpdate": 2024,
+        "regulations": [
+          {
+            "name": "European AI Act (Regulation 2024/1689)",
+            "year": 2024,
+            "authority": "European Commission",
+            "description": "First comprehensive legal framework on AI worldwide",
+            "link": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
+          },
+          {
+            "name": "Portuguese Chapter of Human Rights in the Digital Age",
+            "year": 2021,
+            "authority": "Portuguese Government",
+            "description": "AI use guided by fundamental rights and anti-discrimination principles",
+            "link": "https://www.portugal.gov.pt/"
+          }
+        ],
+        "keyFeatures": [
+          "Human rights focus",
+          "Anti-discrimination principles",
+          "Transparency requirements",
+          "EU AI Act compliance"
+        ]
+      },
+      "AT": {
+        "name": "Austria",
+        "status": "Implemented",
+        "regulationType": "EU AI Act",
+        "implementationYear": 2024,
+        "lastUpdate": 2024,
+        "regulations": [
+          {
+            "name": "European AI Act (Regulation 2024/1689)",
+            "year": 2024,
+            "authority": "European Commission",
+            "description": "First comprehensive legal framework on AI worldwide",
+            "link": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
+          }
+        ],
+        "keyFeatures": [
+          "Risk-based approach",
+          "Harmonized EU-wide framework",
+          "High-risk system requirements",
+          "Medical device integration"
+        ]
+      },
+      "SE": {
+        "name": "Sweden",
+        "status": "Implemented",
+        "regulationType": "EU AI Act + National Laws",
+        "implementationYear": 2024,
+        "lastUpdate": 2024,
+        "regulations": [
+          {
+            "name": "European AI Act (Regulation 2024/1689)",
+            "year": 2024,
+            "authority": "European Commission",
+            "description": "First comprehensive legal framework on AI worldwide",
+            "link": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
+          },
+          {
+            "name": "Patient Data Law",
+            "year": "Ongoing",
+            "authority": "Swedish Government",
+            "description": "Patient information requirements for AI-enabled medical devices",
+            "link": "https://www.government.se/"
+          }
+        ],
+        "keyFeatures": [
+          "Patient information requirements",
+          "EU AI Act compliance",
+          "Discrimination prevention",
+          "Treatment transparency"
+        ]
+      },
+      "CA": {
+        "name": "Canada",
+        "status": "In Development",
+        "regulationType": "Health Canada Framework",
+        "implementationYear": 2019,
+        "lastUpdate": 2025,
+        "regulations": [
+          {
+            "name": "Good Machine Learning Practice (GMLP)",
+            "year": 2025,
+            "authority": "Health Canada + FDA + MHRA",
+            "description": "International harmonized guidelines for AI medical devices",
+            "link": "https://www.canada.ca/en/health-canada.html"
+          },
+          {
+            "name": "Software as Medical Device Guidance",
+            "year": 2019,
+            "authority": "Health Canada",
+            "description": "Framework for software-based medical devices including AI",
+            "link": "https://www.canada.ca/en/health-canada/services/drugs-health-products/medical-devices.html"
+          }
+        ],
+        "keyFeatures": [
+          "International harmonization",
+          "Risk-based approach",
+          "Collaboration with FDA and MHRA",
+          "Software medical device focus"
+        ]
+      },
+      "JP": {
+        "name": "Japan",
+        "status": "In Development",
+        "regulationType": "PMDA Framework",
+        "implementationYear": 2024,
+        "lastUpdate": 2024,
+        "regulations": [
+          {
+            "name": "AI Guidelines for Business Version 1.0",
+            "year": 2024,
+            "authority": "PMDA",
+            "description": "Non-binding guidelines promoting voluntary efforts with risk-based approach",
+            "link": "https://www.pmda.go.jp/"
+          },
+          {
+            "name": "G7 Code of Conduct for AI Organizations",
+            "year": 2024,
+            "authority": "G7",
+            "description": "11 recommendations for advanced AI systems with risk-based approach",
+            "link": "https://www.mofa.go.jp/"
+          }
+        ],
+        "keyFeatures": [
+          "Soft law approach",
+          "Risk minimization focus",
+          "Innovation promotion",
+          "Transition to hard law consideration"
+        ]
+      },
+      "KR": {
+        "name": "South Korea",
+        "status": "In Development",
+        "regulationType": "K-FDA Framework",
+        "implementationYear": 2020,
+        "lastUpdate": 2024,
+        "regulations": [
+          {
+            "name": "AI-based Medical Device Approval Guidelines",
+            "year": 2020,
+            "authority": "K-FDA (Ministry of Food and Drug Safety)",
+            "description": "Guidelines for AI medical device approval and post-market surveillance",
+            "link": "https://www.mfds.go.kr/"
+          }
+        ],
+        "keyFeatures": [
+          "Risk-based classification",
+          "Post-market surveillance",
+          "Clinical evaluation requirements",
+          "International harmonization efforts"
+        ]
+      },
+      "IN": {
+        "name": "India",
+        "status": "In Development",
+        "regulationType": "Sectoral Framework",
+        "implementationYear": 2018,
+        "lastUpdate": 2021,
+        "regulations": [
+          {
+            "name": "National Strategy on AI",
+            "year": 2018,
+            "authority": "NITI Aayog",
+            "description": "National framework for AI development including healthcare applications",
+            "link": "https://www.niti.gov.in/"
+          },
+          {
+            "name": "Responsible AI Principles",
+            "year": 2021,
+            "authority": "Ministry of Electronics and IT",
+            "description": "Operational principles for responsible AI design and implementation",
+            "link": "https://www.meity.gov.in/"
+          }
+        ],
+        "keyFeatures": [
+          "Sectoral frameworks",
+          "Ethical AI design focus",
+          "Capacity building emphasis",
+          "Future Digital India Law consideration"
+        ]
+      },
+      "CL": {
+        "name": "Chile",
+        "status": "In Progress - Advanced",
+        "regulationType": "Comprehensive AI Law",
+        "implementationYear": 2024,
+        "lastUpdate": 2025,
+        "regulations": [
+          {
+            "name": "AI Systems Regulation Law Project",
+            "year": 2024,
+            "authority": "Ministry of Science, Technology, Knowledge and Innovation",
+            "description": "Comprehensive law project regulating AI systems with risk-based approach, currently in Congress",
+            "link": "https://www.minciencia.gob.cl/areas/inteligencia-artificial/Inteligencia-Artificial/Proyecto-Ley-regula-sistemas-IA/"
+          },
+          {
+            "name": "National AI Policy",
+            "year": 2024,
+            "authority": "Ministry of Science, Technology, Knowledge and Innovation",
+            "description": "National policy framework for AI development and implementation",
+            "link": "https://www.minciencia.gob.cl/areas/inteligencia-artificial/politica-nacional-de-inteligencia-artificial/"
+          },
+          {
+            "name": "DEPA - Digital Economy Partnership Agreement",
+            "year": 2020,
+            "authority": "Chile, New Zealand, Singapore",
+            "description": "International agreement specifically addressing AI governance and cooperation",
+            "link": "https://www.direcon.gob.cl/"
+          }
+        ],
+        "congressStatus": "First constitutional procedure in Chamber of Deputies - Future, Science, Technology Committee",
+        "approvalStatus": "Legislative idea approved in committee",
+        "keyFeatures": [
+          "EU AI Act inspired framework",
+          "Four-level risk classification system",
+          "Healthcare-specific focus (4P Medicine)",
+          "Technical Advisory Council",
+          "Future Data Protection Agency enforcement",
+          "Innovation promotion with controlled testing spaces",
+          "International standards alignment (UNESCO, OECD)"
+        ],
+        "healthcareSpecifics": {
+          "focus": "Medicina 4P (Preventive, Participative, Predictive, Personalized)",
+          "riskClassification": "High-risk systems affecting health, safety and fundamental rights",
+          "regulatoryAuthority": "Future Personal Data Protection Agency"
+        }
+      }
+    },
+    "summary": {
+      "totalCountries": 22,
+      "implemented": 15,
+      "inDevelopment": 6,
+      "inProgressAdvanced": 1,
+      "lastUpdated": "2025-06-22",
+      "source": "Global Regulatory Frameworks for AI in Healthcare Services Sector + Chile National Sources",
+      "sourceLink": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10930608/",
+      "notes": "Chile added as 'In Progress - Advanced' due to active AI law project in Congress since May 2024"
+    }
+  }
