@@ -1,0 +1,311 @@
+---
+import countries from '../data/countries.json';
+---
+
+<div id="map" class="map-container"></div>
+<div class="legend">
+  <h3 class="legend-title">AI Medical Regulations</h3>
+  <div class="legend-item">
+    <div class="legend-color implemented"></div>
+    <span>Implemented</span>
+  </div>
+  <div class="legend-item">
+    <div class="legend-color no-regulation"></div>
+    <span>No regulation</span>
+  </div>
+</div>
+
+<script>
+  import L from 'leaflet';
+
+  const geoData = (window as any).countries;
+
+  // Countries with AI medical regulations based on the provided data
+  const countriesWithRegulations = {
+    'US': {
+      name: 'United States',
+      regulations: 'Implemented'
+    },
+    'EU': {
+      name: 'European Union',
+      regulations: 'Implemented'
+    },
+    'GB': {
+      name: 'United Kingdom', 
+      regulations: 'Implemented'
+    },
+    'CN': {
+      name: 'China',
+      regulations: 'Implemented'
+    },
+    'AU': {
+      name: 'Australia',
+      regulations: 'Implemented'
+    },
+    'SG': {
+      name: 'Singapore',
+      regulations: 'Implemented'
+    },
+    'BR': {
+      name: 'Brazil',
+      regulations: 'Implemented'
+    },
+    // EU countries that follow EU regulations
+    'DE': {
+      name: 'Germany',
+      regulations: 'Implemented'
+    },
+    'FR': {
+      name: 'France', 
+      regulations: 'Implemented'
+    },
+    'IT': {
+      name: 'Italy',
+      regulations: 'Implemented'
+    },
+    'ES': {
+      name: 'Spain',
+      regulations: 'Implemented'
+    },
+    'NL': {
+      name: 'Netherlands',
+      regulations: 'Implemented'
+    },
+    'PT': {
+      name: 'Portugal',
+      regulations: 'Implemented'
+    },
+    'CH': {
+      name: 'Switzerland',
+      regulations: 'Implemented'
+    },
+    'AT': {
+      name: 'Austria',
+      regulations: 'Implemented'
+    }
+  };
+
+  // Function to check if country has AI policies
+  function hasIaPolicies(countryCode) {
+    return countriesWithRegulations.hasOwnProperty(countryCode);
+  }
+
+  function getRegulationInfo(countryCode) {
+    return countriesWithRegulations[countryCode] || null;
+  }
+
+  function initMap() {
+    const worldBounds = [
+      [-90, -180], // Southwest coordinates
+      [90, 180]    // Northeast coordinates
+    ];
+
+    const map = L.map('map', {
+      center: [20, 0],
+      zoom: 3,
+      minZoom: 3,
+      maxZoom: 6,
+      maxBounds: worldBounds,
+      maxBoundsViscosity: 1.0,
+      worldCopyJump: false
+    });
+
+    // Dark mode tiles
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '© OpenStreetMap contributors © CARTO',
+      noWrap: true,
+      bounds: worldBounds
+    }).addTo(map);
+
+    // Style function for countries
+    function style(feature) {
+      console.log('Feature properties:', feature.properties);
+      const countryCode = feature.properties["ISO3166-1-Alpha-2"] || feature.properties.iso_a2 || 
+                         feature.properties.ADM0_A3 || feature.properties.adm0_a3;
+      
+      console.log('Country:', feature.properties.NAME || feature.properties.ADMIN, 'Code:', countryCode);
+      
+      if (hasIaPolicies(countryCode)) {
+        console.log('Has AI policies:', countryCode);
+        return {
+          fillColor: '#10b981', // Green for countries with AI policies
+          weight: 2,
+          opacity: 1,
+          color: 'white',
+          dashArray: '3',
+          fillOpacity: 0.8
+        };
+      }
+      
+      return {
+        fillColor: '#3388ff', // Blue for countries without AI policies
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.7
+      };
+    }
+
+    // Highlight feature function
+    function highlightFeature(e) {
+      const layer = e.target;
+      
+      layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+      });
+      
+      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+      }
+    }
+
+    // Reset highlight function  
+    function resetHighlight(e) {
+      geoJsonLayer.resetStyle(e.target);
+    }
+
+    // Zoom to feature function
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
+
+    // Feature event handlers
+    function onEachFeature(feature, layer) {
+      layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+      });
+      
+      // Add popup with country name and AI regulation status
+      if (feature.properties) {
+        const countryName = feature.properties.NAME || feature.properties.ADMIN || feature.properties.NAME_LONG || feature.properties.name || 'Unknown Country';
+        const countryCode = feature.properties["ISO3166-1-Alpha-2"] || feature.properties.iso_a2 || 
+                           feature.properties.ADM0_A3 || feature.properties.adm0_a3;
+        const regulationInfo = getRegulationInfo(countryCode);
+        
+        let popupContent = `
+          <div style="max-width: 300px;">
+            <b>${countryName}</b><br>
+            <small>Code: ${countryCode || 'N/A'}</small><br>
+        `;
+        
+        if (regulationInfo) {
+          popupContent += `
+            <span style="color: #10b981; font-weight: bold;">✓ Implemented</span>
+          `;
+        } else {
+          popupContent += `
+            <span style="color: #6b7280;">No regulation</span>
+          `;
+        }
+        
+        popupContent += `</div>`;
+        
+        layer.bindPopup(popupContent);
+      }
+    }
+
+    // Add GeoJSON layer with country polygons
+    const geoJsonLayer = L.geoJSON(geoData, {
+      style: style,
+      onEachFeature: onEachFeature
+    }).addTo(map);
+  }
+
+  // Initialize map when DOM is loaded
+  document.addEventListener('DOMContentLoaded', initMap);
+</script>
+
+<script define:vars={{ countries }}>
+  window.countries = countries;
+</script>
+
+<style>
+  .map-container {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .legend {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 8px;
+    padding: 12px;
+    z-index: 1000;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    backdrop-filter: blur(8px);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    color: #f1f5f9;
+    font-size: 14px;
+  }
+
+  .legend-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    margin-right: 8px;
+    border: 2px solid white;
+  }
+
+  .legend-color.implemented {
+    background-color: #10b981;
+  }
+
+  .legend-color.no-regulation {
+    background-color: #3388ff;
+  }
+
+  .legend-title {
+    color: #f1f5f9;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+  }
+
+  :global(.popup-content) {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  :global(.popup-content h3) {
+    margin: 0 0 10px 0;
+    color: #f1f5f9;
+  }
+
+  :global(.popup-content p) {
+    margin: 5px 0;
+    color: #cbd5e1;
+    font-size: 14px;
+  }
+
+  :global(.leaflet-popup-content-wrapper) {
+    background: rgba(15, 23, 42, 0.95) !important;
+    border: 1px solid rgba(148, 163, 184, 0.2) !important;
+    backdrop-filter: blur(8px);
+  }
+
+  :global(.leaflet-popup-tip) {
+    background: rgba(15, 23, 42, 0.95) !important;
+    border: 1px solid rgba(148, 163, 184, 0.2) !important;
+  }
+</style>

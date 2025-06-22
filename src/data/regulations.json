@@ -1,0 +1,119 @@
+{
+  "lastGlobalUpdate": "2024-01-01",
+  "countries": [
+    {
+      "countryCode": "US",
+      "countryName": "United States",
+      "status": {
+        "implemented": false,
+        "inProgress": true,
+        "planned": false,
+        "noRegulation": false
+      },
+      "lastUpdated": "2024-01-01",
+      "regulationDetails": {
+        "name": "FDA AI/ML-Based Medical Device Action Plan",
+        "description": "Framework for regulating AI/ML-based medical devices",
+        "url": "https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-and-machine-learning-aiml-enabled-medical-devices",
+        "effectiveDate": "2021-01-12"
+      }
+    },
+    {
+      "countryCode": "DE",
+      "countryName": "Germany",
+      "status": {
+        "implemented": true,
+        "inProgress": false,
+        "planned": false,
+        "noRegulation": false
+      },
+      "lastUpdated": "2024-01-01",
+      "regulationDetails": {
+        "name": "EU AI Act & MDR",
+        "description": "Medical Device Regulation with AI considerations",
+        "effectiveDate": "2021-05-26"
+      }
+    },
+    {
+      "countryCode": "FR",
+      "countryName": "France",
+      "status": {
+        "implemented": true,
+        "inProgress": false,
+        "planned": false,
+        "noRegulation": false
+      },
+      "lastUpdated": "2024-01-01",
+      "regulationDetails": {
+        "name": "EU AI Act & MDR",
+        "description": "Medical Device Regulation with AI considerations",
+        "effectiveDate": "2021-05-26"
+      }
+    },
+    {
+      "countryCode": "ES",
+      "countryName": "Spain",
+      "status": {
+        "implemented": false,
+        "inProgress": true,
+        "planned": false,
+        "noRegulation": false
+      },
+      "lastUpdated": "2024-01-01",
+      "regulationDetails": {
+        "name": "EU AI Act Implementation",
+        "description": "Implementing EU AI Act requirements",
+        "effectiveDate": "2024-08-01"
+      }
+    },
+    {
+      "countryCode": "IT",
+      "countryName": "Italy",
+      "status": {
+        "implemented": false,
+        "inProgress": false,
+        "planned": true,
+        "noRegulation": false
+      },
+      "lastUpdated": "2024-01-01"
+    },
+    {
+      "countryCode": "CA",
+      "countryName": "Canada",
+      "status": {
+        "implemented": false,
+        "inProgress": true,
+        "planned": false,
+        "noRegulation": false
+      },
+      "lastUpdated": "2024-01-01",
+      "regulationDetails": {
+        "name": "Health Canada AI/ML Guidance",
+        "description": "Guidance for AI/ML-enabled medical devices",
+        "effectiveDate": "2022-10-01"
+      }
+    },
+    {
+      "countryCode": "JP",
+      "countryName": "Japan",
+      "status": {
+        "implemented": false,
+        "inProgress": false,
+        "planned": true,
+        "noRegulation": false
+      },
+      "lastUpdated": "2024-01-01"
+    },
+    {
+      "countryCode": "BR",
+      "countryName": "Brazil",
+      "status": {
+        "implemented": false,
+        "inProgress": false,
+        "planned": false,
+        "noRegulation": true
+      },
+      "lastUpdated": "2024-01-01"
+    }
+  ]
+}

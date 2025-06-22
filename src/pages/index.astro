@@ -1,5 +1,5 @@
 ---
-
+import RegulationMap from '../components/RegulationMap.astro';
 ---
 
 <html lang="en">
@@ -8,9 +8,24 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>AI Medical Regulations Map</title>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 	</head>
 	<body>
-		<h1>Astro</h1>
+
+
+		<RegulationMap />
 	</body>
 </html>
+
+<style>
+	body {
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		margin: 0;
+		padding: 0;
+		height: 100vh;
+		overflow: hidden;
+		position: relative;
+		background-color: #0f172a;
+	}
+</style>
